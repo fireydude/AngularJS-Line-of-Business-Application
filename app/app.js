@@ -34,9 +34,16 @@
                 .state("productDetail", {
                     url: "/product/:productId",
                     templateUrl: "app/products/productDetailView.html",
-                    controller: "ProductDetailCtrl as vm"
+                    controller: "ProductDetailCtrl as vm",
+                    resolve: {
+                        pr: "productResource",
+                        product: function(pr, $stateParams) {
+                            var productId = $stateParams.productId;
+                            return pr.get({ productId: productId })
+                                .$promise;
+                        }
+                    }
                 });
-
         }
     ]);
     
