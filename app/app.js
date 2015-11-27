@@ -32,7 +32,7 @@
                     templateUrl: "app/products/productEditView.html",
                     controller: "ProductEditCtrl as vm",
                     resolve: {
-                        pr: "productResource",
+                        productResource: "productResource",
                         product: function (productResource, $stateParams) {
                             var prod = productResource.get({ productId: $stateParams.productId });
                             return prod.$promise;
