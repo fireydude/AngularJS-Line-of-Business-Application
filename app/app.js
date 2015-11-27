@@ -27,9 +27,29 @@
                     controller: "ProductListCtrl as vm"
                 })
                 .state("productEdit", {
+                    abstract: true,
                     url: "/prodcts/edit/:productId",
                     templateUrl: "app/products/productEditView.html",
-                    controller: "ProductEditCtrl as vm"
+                    controller: "ProductEditCtrl as vm",
+                    resolve: {
+                        pr: "productResource",
+                        product: function (productResource, $stateParams) {
+                            var prod = productResource.get({ productId: $stateParams.productId });
+                            return prod.$promise;
+                        }
+                    }
+                })
+                .state("productEdit.info", {
+                    url: "/info",
+                    templateUrl: "app/products/productEditInfoView.html"
+                })
+                .state("productEdit.price", {
+                    url: "/price",
+                        templateUrl: "app/products/productEditPriceView.html"
+                        })
+                .state("productEdit.tags", {
+                        url: "/tags",
+                        templateUrl: "app/products/productEditTagsView.html"
                 })
                 .state("productDetail", {
                     url: "/product/:productId",
@@ -38,9 +58,7 @@
                     resolve: {
                         pr: "productResource",
                         product: function(pr, $stateParams) {
-                            var productId = $stateParams.productId;
-                            return pr.get({ productId: productId })
-                                .$promise;
+                            return pr.get({ productId: $stateParams.productId }).$promise;
                         }
                     }
                 });
