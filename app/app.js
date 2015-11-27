@@ -30,6 +30,11 @@
                     url: "/prodcts/edit/:productId",
                     templateUrl: "app/products/productEditView.html",
                     controller: "ProductEditCtrl as vm"
+                })
+                .state("productDetail", {
+                    url: "/product/:productId",
+                    templateUrl: "app/products/productDetailView.html",
+                    controller: "ProductDetailCtrl as vm"
                 });
 
         }
