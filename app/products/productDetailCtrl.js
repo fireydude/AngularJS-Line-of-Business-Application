@@ -1,8 +1,14 @@
-﻿(function (undefined) {
+/**
+ * Created by Deb on 8/26/2014.
+ */
+(function () {
     "use strict";
 
-    angular.module("productManagement")
-        .controller("ProductDetailCtrl", ["product", ProductDetailCtrl]);
+    angular
+        .module("productManagement")
+        .controller("ProductDetailCtrl",
+                    ["product",
+                     ProductDetailCtrl]);
 
     function ProductDetailCtrl(product) {
         var vm = this;
@@ -15,4 +21,4 @@
             vm.product.tagList = vm.product.tags.toString();
         }
     }
-})();
+}());

@@ -28,8 +28,7 @@ form legend {
     position: relative;
     text-decoration: none;
 }
-
 .wizard .active {
-    background: #007acc;
+    background: #007ACC;
     color: #fff;
 }
